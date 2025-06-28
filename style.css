@@ -1,0 +1,124 @@
+:root{
+    --back1: rgb(17, 17, 17);
+    --back2: rgb(20, 20, 20);
+    --color2: rgb(230, 230, 230);
+    --color1: rgb(180, 180, 180);
+    --color3: rgb(119, 119, 119);
+    --color4: rgb(73, 73, 73);
+    --color5: rgb(51, 51, 51);
+    --ff: Arial, Helvetica, sans-serif;
+    --shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    background: var(--back1);
+    color: var(--color1);
+    font-family: var(--ff);
+    /*font-size: initial;*/
+    flex-direction: column;
+    min-height: 100vh;
+}
+h1,h2,h3,h4{
+    color: var(--color2);
+    font-weight: normal;
+    margin-top: 0;
+}
+p{
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+a{
+    color: var(--color3);
+}
+a:hover,a:visited:hover{
+    color: var(--color5);
+}
+a:visited{
+    color: var(--color4);
+}
+
+
+
+.flex{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+.null{
+    pointer-events: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.center{
+    /*align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;*/
+    text-align: center;
+}
+.pixel{
+    /*image-rendering: pixelated;*/
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+
+
+section{
+    background: var(--back2);
+    margin: .5em;
+    padding: 2em;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+header, footer{
+    background: var(--back2);
+    padding: 1em;
+    box-shadow: var(--shadow);
+    flex-grow: 0;
+}
+footer{
+    font-size: 14px;
+}
+main{
+    flex-grow: 1;
+}
+#burger{
+    /*pointer-events: none;*/
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    color: var(--color2);
+}
+
+header ul{
+    margin: 0;
+    padding: 0;
+}
+header ul li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: inline;
+    margin-right: 1em;
+}
+header ul li a{
+    text-decoration: none;
+    color: var(--color1);
+}
+header ul li a:visited{
+    color: var(--color1);
+}
+header ul li a:hover,header ul li a:visited:hover{
+    color: var(--color3);
+}

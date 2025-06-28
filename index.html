@@ -1,80 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>React + Three.js Rotating Cube</title>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-    }
-    #root {
-      width: 100vw;
-      height: 100vh;
-    }
-  </style>
-  <!-- React and ReactDOM CDNs -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>NEW PAGE</title>
+        <!--
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body class="flex">
+        <header>
+            <ul>
+                <li id="burger">☰</li>
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Shop</a></li>
+            </ul>
+        </header>
+        <main>
 
-  <!-- Three.js CDN -->
-  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
-</head>
-<body>
-  <div id="root"></div>
+            <section class="center">
+                <h2>New Page</h2>
+                Lorem ipsum dolor sit amet.
+            </section>
 
-  <script type="text/javascript">
-    const { useRef, useEffect } = React;
+            <section>
+                <h2 class="center">Lorem, ipsum dolor.</h2>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. <a href="dfbdbxf">Nulla</a> sit incidunt dolorem exercitationem neque et saepe, aut amet? Commodi dolorum dolorem laborum inventore molestiae! Alias tempora debitis delectus molestias pariatur, enim quisquam natus voluptate omnis quidem distinctio! Impedit quam doloribus aliquam nulla mollitia enim! Beatae aliquid nostrum recusandae, ab deserunt in quidem error inventore corporis, praesentium quos ducimus cumque magnam! Adipisci sint, ullam, exercitationem est soluta cupiditate at autem harum pariatur quae, ipsum itaque error accusantium doloremque. Quam libero enim beatae unde voluptatem aspernatur suscipit sequi, minus error ex ipsa autem animi vero aperiam nobis assumenda quaerat voluptates! Itaque, aut!
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla sit <a href="">incidunt</a> dolorem exercitationem neque et saepe, aut amet? Commodi dolorum dolorem laborum inventore molestiae! Alias tempora debitis delectus molestias pariatur, enim quisquam natus voluptate omnis quidem distinctio! Impedit quam doloribus aliquam nulla mollitia enim! Beatae aliquid nostrum recusandae, ab deserunt in quidem error inventore corporis, praesentium quos ducimus cumque magnam! Adipisci sint, ullam, exercitationem est soluta cupiditate at autem harum pariatur quae, ipsum itaque error accusantium doloremque. Quam libero enim beatae unde voluptatem aspernatur suscipit sequi, minus error ex ipsa autem animi vero aperiam nobis assumenda quaerat voluptates! Itaque, aut!
+                </p>
+            </section>
 
-    function CubeScene() {
-      const mountRef = useRef(null);
+            <section class="center">
+                <h3>Info</h3>
+                <?php echo("PHP is working."); ?>
+                <div id="scr"></div>
+                <p>
+                    <a>Unvisited link</a>, <a href="">Visited link</a>,
+                    <a href="https://palettes.shecodes.io/">color palettes</a>,
+                    <a href="https://colorhunt.co/">color palettes</a>,
+                    <a href="https://coolors.co/">color palettes</a>,
+                    <a href="https://colors.dopely.top/inside-colors/40-elegant-color-palettes-with-their-gradients/?amp=1">color palettes</a>,
+                    <a href="https://digitalsynopsis.com/design/color-palettes-combinations-schemes/">color palettes</a>
+                </p>
+            </section>
 
-      useEffect(() => {
-        const width = mountRef.current.clientWidth;
-        const height = mountRef.current.clientHeight;
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-        camera.position.z = 2;
-
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(width, height);
-        mountRef.current.appendChild(renderer.domElement);
-
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x0077ff, wireframe: true });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-
-        const animate = function () {
-          cube.rotation.x += 0.01;
-          cube.rotation.y += 0.01;
-          renderer.render(scene, camera);
-          requestAnimationFrame(animate);
-        };
-
-        animate();
-
-        const handleResize = () => {
-          const width = mountRef.current.clientWidth;
-          const height = mountRef.current.clientHeight;
-          renderer.setSize(width, height);
-          camera.aspect = width / height;
-          camera.updateProjectionMatrix();
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-          window.removeEventListener('resize', handleResize);
-          mountRef.current.removeChild(renderer.domElement);
-        };
-      }, []);
-
-      return React.createElement('div', { ref: mountRef, style: { width: '100%', height: '100%' } });
-    }
-
-    ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(CubeScene));
-  </script>
-</body>
+        </main>
+        <footer>
+            © 2023 Consectetur Adipisicing Elit. Eum provident sit alias corporis nulla repellendus.
+        </footer>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
 </html>
