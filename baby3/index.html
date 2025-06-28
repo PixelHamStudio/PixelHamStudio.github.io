@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Babylon.js OBJ from String</title>
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+    canvas { width: 100%; height: 100%; display: block; }
+  </style>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+</head>
+<body>
+  <canvas id="renderCanvas"></canvas>
+  <script>
+    // Example OBJ data (a simple triangle mesh)
+    const objData = `
+    o SimpleTriangle
+    v 0 1 0
+    v -1 -1 0
+    v 1 -1 0
+    vt 0.5 1
+    vt 0 0
+    vt 1 0
+    vn 0 0 1
+    f 1/1/1 2/2/1 3/3/1
+    `;
+
+    // Create engine and scene
+    const canvas = document.getElementById("renderCanvas");
+    const engine = new BABYLON.Engine(canvas, true);
+    const scene = new BABYLON.Scene(engine);
+    scene.clearColor = new BABYLON.Color3(0.2, 0.2, 0.3);
+
+    // Add camera and light
+    const camera = new BABYLON.ArcRotateCamera("camera", Math.PI/2, Math.PI/3, 4, BABYLON.Vector3.Zero(), scene);
+    camera.attachControl(canvas, true);
+    const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0), scene);
+
+    // Load OBJ from string
+    const blob = new Blob([objData], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    BABYLON.SceneLoader.ImportMesh(
+      null, "", url, scene, function(meshes) {
+        // Apply random texture from the internet
+        const material = new BABYLON.StandardMaterial("mat", scene);
+        material.diffuseTexture = new BABYLON.Texture("https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg", scene);
+        meshes.forEach(mesh => mesh.material = material);
+      },
+      null,
+      null,
+      '.obj'
+    );
+
+    engine.runRenderLoop(() => scene.render());
+    window.addEventListener("resize", () => engine.resize());
+  </script>
+</body>
+</html>
