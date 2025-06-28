@@ -12,7 +12,12 @@
 </head>
 <body>
   <canvas id="renderCanvas"></canvas>
+  <script src="https://embed.discordapp.com/sdk.js"></script>
   <script>
+    window.DiscordSDK = await window.DiscordSDK.init({
+  clientId: '1388663227478446170',
+});
+
     // Example OBJ data (a simple triangle mesh)
     const objData = `
     # Blender 3.4.1
